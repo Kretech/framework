@@ -13,13 +13,13 @@ func TestServiceProvider(t *testing.T) {
 
 	Convey("TestEventServiceProvider", t, func() {
 		c := containerPkg.NewContainer()
-		p := NewServiceProvider()
-		p.Register(c)
+		p := GetRegister()
+		p(c)
 
 		dispatcher := c.Make(`events`).(*events.Dispatcher)
 
 		dispatcher.ListenFunc(`start`, func() {})
 		dispatcher.Dispatch(`start`)
-		//dispatcher.TestTool.ShouldDispatched(`start`)
+		// dispatcher.TestTool.ShouldDispatched(`start`)
 	})
 }

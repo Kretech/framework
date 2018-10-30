@@ -15,9 +15,13 @@ func NewTomlFileServiceRegister(file string) func(*container.Container) {
 
 		b, err := ioutil.ReadFile(file)
 		if err != nil {
-			panic("load config error" + err.Error())
+			panic("load config file error" + err.Error())
 		}
-		conf.Load(b)
+
+		err = conf.Load(b)
+		if err != nil {
+			panic(`parse toml error` + err.Error())
+		}
 
 		c.Singleton("config", conf)
 		configx.NewConfigProxy(c)
