@@ -3,6 +3,7 @@ language: go
 go:
   - master
 
-go_import_path: github.com/Kretech/contracts
+before_install:
+  - go get -v github.com/Kretech/contracts
 
 script: go test -v ./...
