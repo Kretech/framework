@@ -4,6 +4,6 @@ go:
   - master
 
 before_install:
-  - go get -v github.com/Kretech/contracts
+  - go get -v -d github.com/Kretech/contracts
 
 script: go test -v ./...
